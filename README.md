@@ -1,4 +1,3 @@
-# KODAM III/SILIWANGI
 <html lang="id">
 <head>
     <meta charset="UTF-8" />

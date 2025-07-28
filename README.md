@@ -63,7 +63,7 @@
 </head>
 <body>
     <header>
-        <h2>PETA KOREM & JAJARAN WILAYAH KODAM III/SILIWANGI i</h2>
+        <h2>PETA KOREM & JAJARAN WILAYAH KODAM III/SILIWANGI</h2>
     </header>
 
     <div id="map"></div>

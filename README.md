@@ -1,5 +1,4 @@
 # KODAM III/SILIWANGI
-<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8" />
@@ -64,7 +63,7 @@
 </head>
 <body>
     <header>
-        <h2>Peta Korem dan Kodim Kodam III/Siliwangi</h2>
+        <h2>PETA KOREM & JAJARAN WILAYAH KODAM III/SILIWANGI i</h2>
     </header>
 
     <div id="map"></div>
@@ -83,7 +82,7 @@
         </tbody>
     </table>
 
-    <footer>© 2025 - Peta Kodam III/Siliwangi | Dibuat dengan LeafletJS & OpenStreetMap</footer>
+    <footer>© 2025 - Peta Kodam III/Siliwangi | Dibuat Tim Siber Siliwangi</footer>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

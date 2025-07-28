@@ -1,38 +1,72 @@
-# petaslw
+# KODAM III/SILIWANGI
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8" />
-    <title>Peta Korem dan Kodim Kodam III/Siliwangi</title>
+    <title>Peta Kodam III/Siliwangi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        h2 { text-align: center; margin: 10px 0; }
-        #map { height: 60vh; width: 100%; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        header {
+            background-color: #004085;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        #map {
+            height: 65vh;
+            width: 100%;
+        }
+
+        h2 {
+            margin: 0;
+        }
+
         table {
             width: 90%;
-            margin: 20px auto;
+            margin: 30px auto;
             border-collapse: collapse;
-            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+            background-color: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
+
         th, td {
-            padding: 8px 12px;
+            padding: 10px 14px;
             border: 1px solid #ddd;
             text-align: center;
         }
+
         th {
             background-color: #007BFF;
             color: white;
         }
+
         tbody tr:hover {
             background-color: #f1f1f1;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 13px;
+            padding: 15px;
+            color: #555;
         }
     </style>
 </head>
 <body>
-    <h2>Peta Korem dan Kodim Kodam III/Siliwangi</h2>
+    <header>
+        <h2>Peta Korem dan Kodim Kodam III/Siliwangi</h2>
+    </header>
+
     <div id="map"></div>
 
     <table>
@@ -45,14 +79,16 @@
             </tr>
         </thead>
         <tbody id="table-body">
-            <!-- Data akan diisi dengan JavaScript -->
+            <!-- Diisi via JavaScript -->
         </tbody>
     </table>
+
+    <footer>© 2025 - Peta Kodam III/Siliwangi | Dibuat dengan LeafletJS & OpenStreetMap</footer>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        var locations = [
+        const locations = [
             {unit: "Korem 061/SK", kota:"Bogor", lat:-6.595, lng:106.816},
             {unit: "Kodim 0606", kota:"Kota Bogor", lat:-6.595, lng:106.816},
             {unit: "Kodim 0607", kota:"Kota Sukabumi", lat:-6.922, lng:106.927},
@@ -82,47 +118,27 @@
             {unit: "Kodim 0618", kota:"Kota Bandung", lat:-6.917, lng:107.619}
         ];
 
-        // Inisialisasi peta
-        var map = L.map('map').setView([-6.8, 107.0], 8);
+        const map = L.map('map').setView([-6.8, 107], 8);
 
-        // Layer peta OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // Tambah marker ke peta dan isi tabel
-        var tbody = document.getElementById('table-body');
+        const tbody = document.getElementById('table-body');
 
-        locations.forEach(function(loc) {
-            // Marker di peta
-            var marker = L.marker([loc.lat, loc.lng]).addTo(map);
-            marker.bindPopup(
-                "<b>" + loc.unit + "</b><br/>" +
-                loc.kota + "<br/>" +
-                "Latitude: " + loc.lat + "<br/>" +
-                "Longitude: " + loc.lng
-            );
+        locations.forEach(loc => {
+            L.marker([loc.lat, loc.lng])
+                .addTo(map)
+                .bindPopup(`<b>${loc.unit}</b><br>${loc.kota}<br>Lat: ${loc.lat}<br>Lng: ${loc.lng}`);
 
-            // Baris tabel
-            var row = document.createElement('tr');
-
-            var cellUnit = document.createElement('td');
-            cellUnit.textContent = loc.unit;
-            row.appendChild(cellUnit);
-
-            var cellKota = document.createElement('td');
-            cellKota.textContent = loc.kota;
-            row.appendChild(cellKota);
-
-            var cellLat = document.createElement('td');
-            cellLat.textContent = loc.lat;
-            row.appendChild(cellLat);
-
-            var cellLng = document.createElement('td');
-            cellLng.textContent = loc.lng;
-            row.appendChild(cellLng);
-
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${loc.unit}</td>
+                <td>${loc.kota}</td>
+                <td>${loc.lat}</td>
+                <td>${loc.lng}</td>
+            `;
             tbody.appendChild(row);
         });
     </script>
